@@ -356,7 +356,7 @@ const handleCreatingShapes = async (
   }
 
   async function tryCreateLogseqPortalShapesFromUUID(rawText: string) {
-    if (/^\(\(.*\)\)$/.test(rawText) && rawText.length === NIL_UUID.length + 4) {
+    if (/^\[\[id:.*\]\]$/.test(rawText) && rawText.length === NIL_UUID.length + 4) {
       const blockRef = rawText.slice(2, -2)
       if (validUUID(blockRef)) {
         return [
@@ -490,7 +490,7 @@ export function usePaste() {
         const rawText = (await blob.text()).trim()
 
         if (rawText) {
-          if (/^\(\(.*\)\)$/.test(rawText) && rawText.length === NIL_UUID.length + 4) {
+          if (/^\[\[id:.*\]\]$/.test(rawText) && rawText.length === NIL_UUID.length + 4) {
             const blockRef = rawText.slice(2, -2)
             if (validUUID(blockRef)) {
               newRef = blockRef

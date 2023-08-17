@@ -139,7 +139,7 @@ export class LogseqPortalShape extends TLBoxShape<LogseqPortalShapeProps> {
   static isPageOrBlock(id: string): 'P' | 'B' | false {
     const blockRefEg = '((62af02d0-0443-42e8-a284-946c162b0f89))'
     if (id) {
-      return /^\(\(.*\)\)$/.test(id) && id.length === blockRefEg.length ? 'B' : 'P'
+      return /^\[\[id:.*\]\]$/.test(id) && id.length === blockRefEg.length ? 'B' : 'P'
     }
     return false
   }
@@ -213,7 +213,7 @@ export class LogseqPortalShape extends TLBoxShape<LogseqPortalShapeProps> {
           }
         }
         return () => {}
-      }, 10);
+      }, 10)
     }, [ref, selector])
     return size
   }

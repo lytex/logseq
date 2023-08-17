@@ -25,7 +25,7 @@
 ;; DONE: 5. Roam attributes -> properties
 ;; TODO: 6. hiccup
 
-(defonce uid-pattern #"\(\(([a-zA-Z0-9_\\-]{6,24})\)\)")
+(defonce uid-pattern #"\[\[id:([a-zA-Z0-9_\\-]{6,24})\]\]")
 (defonce macro-pattern #"\{\{([^{}]+)\}\}")
 
 (defn uid-transform

@@ -2,11 +2,11 @@
   "Core vars and util fns for block-refs"
   (:require [clojure.string :as string]))
 
-(def left-parens "Opening characters for block-ref" "((")
-(def right-parens "Closing characters for block-ref" "))")
+(def left-parens "Opening characters for block-ref" "[[")
+(def right-parens "Closing characters for block-ref" "]]")
 (def left-and-right-parens "Opening and closing characters for block-ref"
   (str left-parens right-parens))
-(def block-ref-re #"\(\(([a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12})\)\)")
+(def block-ref-re #"\[\[id:([a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12})\]\]")
 
 (defn get-all-block-ref-ids
   [content]
