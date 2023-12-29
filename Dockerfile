@@ -27,14 +27,8 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | \
 WORKDIR /data
 
 # build Logseq static resources
-RUN git clone -b master https://github.com/logseq/logseq.git .
+RUN git clone -b master https://github.com/lytex/logseq.git . && git checkout org_id_links
 
 RUN yarn config set network-timeout 240000 -g && yarn install
 
-RUN  yarn release 
-
-# Web App Runner image
-FROM nginx:1.24.0-alpine3.17
-
-COPY --from=builder /data/static /usr/share/nginx/html
-
+ENTRYPOINT ["yarn", "watch"] 
